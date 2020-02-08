@@ -1,4 +1,5 @@
 package com.mycompany.app;
+
 import static spark.Spark.get;
 import static spark.Spark.port;
 import static spark.Spark.post;
@@ -51,11 +52,24 @@ public class App {
         get("/", (req, res) -> "Hello, World");
 
         post("/compute", (req, res) -> {
-          //System.out.println(req.queryParams("input1"));
-          //System.out.println(req.queryParams("input2"));
+          System.out.println("heroku running or not!");
 
+        
+        String input1 = req.queryParams("input1");
+          java.util.Scanner sc1 = new java.util.Scanner(input1);
+          sc1.useDelimiter("[;\r\n]+");
+          String s ;
+          while (sc1.hasNext())
+          {
+            String input = sc1.next().replaceAll("\\s","");
+            s = input;
+          }
 
-          String result = App.cryptoMethod(array1,array2,toBeEncrypted,cryptInt);
+          String input2 = req.queryParams("input2").replaceAll("\\s","");
+          int input2AsInt = Integer.parseInt(input2);
+        
+            
+          String result = App.cryptoMethod(array1,array2,s,input2AsInt);
 
          Map map = new HashMap();
           map.put("result", result);
