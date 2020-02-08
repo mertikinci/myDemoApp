@@ -58,7 +58,7 @@ public class App {
         String input1 = req.queryParams("input1");
           java.util.Scanner sc1 = new java.util.Scanner(input1);
           sc1.useDelimiter("[;\r\n]+");
-          String s ;
+          String s = "";
           while (sc1.hasNext())
           {
             String input = sc1.next().replaceAll("\\s","");
